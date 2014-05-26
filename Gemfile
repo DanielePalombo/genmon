@@ -41,3 +41,9 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'mongoid', github: 'mongoid/mongoid'
+gem 'bson_ext'
+
+group :test do
+  gem "rspec-rails"
+end
