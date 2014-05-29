@@ -36,6 +36,10 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'formtastic'#,          github: 'justinfrench/formtastic'
+gem 'bootstrap-generators', '~> 3.0'
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
