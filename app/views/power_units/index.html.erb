@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to new_power_unit_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Power unit
+  <% end %>
+  <h1>Listing power_units</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Code</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @power_units) do |power_unit| %>
+            <td><%= power_unit.code %></td>
+            <td><%= link_to 'Show', power_unit %></td>
+        <td><%= link_to 'Edit', edit_power_unit_path(power_unit) %></td>
+        <td><%= link_to 'Destroy', power_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
