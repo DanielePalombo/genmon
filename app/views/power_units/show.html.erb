@@ -14,4 +14,16 @@
   <dt>Code:</dt>
   <dd><%= @power_unit.code %></dd>
 
+  <dt>Diesel Mixed set:</dt>
+  <dd><%= number_to_percentage @power_unit.diesel_mixed_set, precision: 0 %></dd>
+
+
+  <dt>Diesel Level:</dt>
+  <dd><%= @power_unit.diesel_informations.last.level %></dd>
+
+  <dt>Gpl Level:</dt>
+  <dd><%= @power_unit.gpl_informations.last.level %></dd>
+
+  <dt>Mixed Level:</dt>
+  <dd><%= @power_unit.mixed_informations.last.level %></dd>
 </dl>

@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_power_unit_mixed_information_path(@power_unit), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New mixed information
+  <% end %>
+  <h1>Listing mixed_informations</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Value</th>
+            <th>Level</th>
+            <th>Created at</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @mixed_informations) do |mixed_information| %>
+        <td><%= mixed_information.raw_value %></td>
+        <td><%= mixed_information.level %></td>
+        <td><%= mixed_information.created_at %></td>
+        <td><%= link_to 'Show', power_unit_mixed_information_path(@power_unit, mixed_information) %></td>
+        <td><%= link_to 'Edit', edit_power_unit_mixed_information_path(@power_unit, mixed_information) %></td>
+        <td><%= link_to 'Destroy', power_unit_mixed_information_path(@power_unit, mixed_information), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

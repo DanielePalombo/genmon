@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_power_unit_diesel_information_path(@power_unit), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Diesel information
+  <% end %>
+  <h1>Listing diesel_informations</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Value</th>
+            <th>Level</th>
+            <th>Created at</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @diesel_informations) do |diesel_information| %>
+        <td><%= diesel_information.raw_value %></td>
+        <td><%= diesel_information.level %></td>
+        <td><%= diesel_information.created_at %></td>
+        <td><%= link_to 'Show', power_unit_diesel_information_path(@power_unit, diesel_information) %></td>
+        <td><%= link_to 'Edit', edit_power_unit_diesel_information_path(@power_unit, diesel_information) %></td>
+        <td><%= link_to 'Destroy', power_unit_diesel_information_path(@power_unit, diesel_information), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

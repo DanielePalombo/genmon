@@ -15,8 +15,13 @@ Genmon::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+
   resources :admin_users
-  resources :power_units
+  resources :power_units do 
+    resources :diesel_informations
+    resources :gpl_informations
+    resources :mixed_informations
+  end
 
   # Example resource route with options:
   #   resources :products do

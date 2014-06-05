@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to power_unit_gpl_informations_path(@power_unit), :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_power_unit_gpl_information_path(@power_unit, @gpl_information), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show gpl_information</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Raw Value:</dt>
+  <dd><%= @gpl_information.raw_value %></dd>
+
+  <dt>Level:</dt>
+  <dd><%= @gpl_information.level %></dd>
+
+  <dt>Created at:</dt>
+  <dd><%= @gpl_information.created_at %></dd>
+
+</dl>

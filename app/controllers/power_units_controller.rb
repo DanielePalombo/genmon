@@ -69,6 +69,6 @@ class PowerUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def power_unit_params
-      params.require(:power_unit).permit(:code)
+      params.require(:power_unit).permit(:code, :diesel_mixed_set)
     end
 end
