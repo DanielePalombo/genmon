@@ -11,15 +11,25 @@ class PowerUnit
     :presence => true,
     :numericality => { :greater_than_or_equal_to => 30, :less_than_or_equal_to => 100 }
 
-  embeds_many :diesel_informations,
-    class_name: "LevelInformation", 
-    store_as: 'diesel_information'
+  embeds_many :diesel_informations#,
+    #class_name: "LevelInformation", 
+    #store_as: 'diesel_informations'
 
-  embeds_many :gpl_informations,
-    class_name: "LevelInformation", 
-    store_as: 'gpl_information'
+  embeds_many :gpl_informations#,
+    #class_name: "LevelInformation", 
+    #store_as: 'gpl_informations'
 
-  embeds_many :mixed_informations,
-    class_name: "LevelInformation", 
-    store_as: 'mixed_information'
+  embeds_many :mixed_informations#,
+    #class_name: "LevelInformation", 
+    #store_as: 'mixed_informations'
+
+  embeds_many :diesel_alarms#,
+    #class_name: "Alarm", 
+    #store_as: 'diesel_alarms'
+
+  embeds_many :gpl_alarms#,
+    #class_name: "Alarm", 
+    #store_as: 'gpl_alarms'
+
+  embeds_many :states
 end

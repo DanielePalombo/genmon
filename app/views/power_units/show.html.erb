@@ -19,11 +19,20 @@
 
 
   <dt>Diesel Level:</dt>
-  <dd><%= @power_unit.diesel_informations.last.level %></dd>
+  <dd><%= @power_unit.diesel_informations.last.level unless @power_unit.diesel_informations.empty? %></dd>
 
   <dt>Gpl Level:</dt>
-  <dd><%= @power_unit.gpl_informations.last.level %></dd>
+  <dd><%= @power_unit.gpl_informations.last.level unless @power_unit.gpl_informations.empty? %></dd>
 
   <dt>Mixed Level:</dt>
-  <dd><%= @power_unit.mixed_informations.last.level %></dd>
+  <dd><%= @power_unit.mixed_informations.last.level unless @power_unit.mixed_informations.empty? %></dd>
+
+  <dt>Gpl Alarm:</dt>
+  <dd><%= @power_unit.gpl_alarms.last.state unless @power_unit.gpl_alarms.empty? %></dd>
+
+  <dt>Diesel Alarm:</dt>
+  <dd><%= @power_unit.diesel_alarms.last.state unless @power_unit.diesel_alarms.empty? %></dd>
+
+  <dt>STATE:</dt>
+  <dd><%= @power_unit.states.last.state unless @power_unit.states.empty? %></dd>
 </dl>

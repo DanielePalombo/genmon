@@ -1,6 +1,6 @@
 # gpl INFORMATION
 class GplInformationsController < ApplicationController
-  include Levelable
+  include InformationController
 
   before_action :set_power_unit
   before_action :set_gpl_information, only: [:show, :edit, :update, :destroy]

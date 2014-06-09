@@ -1,6 +1,6 @@
 # DIESEL INFORMATION
 class DieselInformationsController < ApplicationController
-  include Levelable
+  include InformationController
 
   before_action :set_power_unit
   before_action :set_diesel_information, only: [:show, :edit, :update, :destroy]

@@ -1,0 +1,32 @@
+<%= form_for(@diesel_alarm, :as => :diesel_alarm, :url => power_unit_diesel_alarm_path(@power_unit, @diesel_alarm), :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @diesel_alarm.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@diesel_alarm.errors.count, "error") %> prohibited this alarm from being saved:</h4>
+
+      <ul>
+      <% @diesel_alarm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :raw_value, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :raw_value, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :state, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :state, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

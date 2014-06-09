@@ -21,6 +21,11 @@ Genmon::Application.routes.draw do
     resources :diesel_informations
     resources :gpl_informations
     resources :mixed_informations
+
+    resources :gpl_alarms
+    resources :diesel_alarms
+
+    resources :states
   end
 
   # Example resource route with options:
