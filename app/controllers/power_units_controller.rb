@@ -1,5 +1,5 @@
 class PowerUnitsController < ApplicationController
-  before_action :set_power_unit, only: [:show, :edit, :update, :destroy]
+  before_action :set_power_unit, only: [:show, :edit, :update, :destroy, :add_informations]
 
   # GET /power_units
   # GET /power_units.json
@@ -61,10 +61,51 @@ class PowerUnitsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /power_units/1/informations
+  # PATCH/PUT /power_units/1/informations.json
+  def add_informations
+    #convert key to information
+    #information_params = Hash[params.map do |k, obj| 
+    information_params = {}
+    params.each do |k, obj| 
+      information_params[:power_unit] ||= HashWithIndifferentAccess.new 
+      case k
+      when 'dl'
+        information_params[:power_unit][:diesel_informations_attributes] = HashWithIndifferentAccess.new :raw_value=>obj
+      when 'gl' 
+        information_params[:power_unit][:gpl_informations_attributes] =    HashWithIndifferentAccess.new :raw_value=>obj
+      when 'ml' 
+        information_params[:power_unit][:mixed_informations_attributes] =  HashWithIndifferentAccess.new :raw_value=>obj
+      when 'da' 
+        information_params[:power_unit][:diesel_alarms_attributes] =       HashWithIndifferentAccess.new :raw_value=>obj
+      when 'ga' 
+        information_params[:power_unit][:diesel_alarms_attributes] =       HashWithIndifferentAccess.new :raw_value=>obj
+      when 's' 
+        information_params[:power_unit][:states] =                         HashWithIndifferentAccess.new :raw_value=>obj
+      else
+        information_params[k] = obj
+      end
+    end
+
+    respond_to do |format|
+      p information_params
+      if @power_unit.update(information_params[:power_unit])
+        format.html { redirect_to @power_unit, notice: 'Power unit was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @power_unit.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_power_unit
       @power_unit = PowerUnit.find(params[:id])
+      if @power_unit.nil?
+        @power_unit = PowerUnit.find_by_code params[:id]
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

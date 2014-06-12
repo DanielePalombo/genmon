@@ -32,4 +32,6 @@ class PowerUnit
     #store_as: 'gpl_alarms'
 
   embeds_many :states
+
+  accepts_nested_attributes_for :diesel_informations, :gpl_informations, :mixed_informations, :diesel_alarms, :gpl_alarms, :states
 end

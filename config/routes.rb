@@ -26,6 +26,11 @@ Genmon::Application.routes.draw do
     resources :diesel_alarms
 
     resources :states
+
+    member do
+      #put :add_informations
+      get :add_informations
+    end
   end
 
   # Example resource route with options:
