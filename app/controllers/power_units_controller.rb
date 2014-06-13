@@ -71,17 +71,17 @@ class PowerUnitsController < ApplicationController
       information_params[:power_unit] ||= HashWithIndifferentAccess.new 
       case k
       when 'dl'
-        information_params[:power_unit][:diesel_informations_attributes] = HashWithIndifferentAccess.new :raw_value=>obj
-      when 'gl' 
-        information_params[:power_unit][:gpl_informations_attributes] =    HashWithIndifferentAccess.new :raw_value=>obj
-      when 'ml' 
-        information_params[:power_unit][:mixed_informations_attributes] =  HashWithIndifferentAccess.new :raw_value=>obj
-      when 'da' 
-        information_params[:power_unit][:diesel_alarms_attributes] =       HashWithIndifferentAccess.new :raw_value=>obj
-      when 'ga' 
-        information_params[:power_unit][:diesel_alarms_attributes] =       HashWithIndifferentAccess.new :raw_value=>obj
-      when 's' 
-        information_params[:power_unit][:states] =                         HashWithIndifferentAccess.new :raw_value=>obj
+        information_params[:power_unit][:diesel_informations_attributes] = [{:raw_value=>obj}]
+      when 'gl'                                                                             
+        information_params[:power_unit][:gpl_informations_attributes] =    [{:raw_value=>obj}]
+      when 'ml'                                                                            
+        information_params[:power_unit][:mixed_informations_attributes] =  [{:raw_value=>obj}]
+      when 'da'                                                                           
+        information_params[:power_unit][:diesel_alarms_attributes] =       [{:raw_value=>obj}]
+      when 'ga'                                                                          
+        information_params[:power_unit][:gpl_alarms_attributes] =       [{:raw_value=>obj}]
+      when 's'                                                                          
+        information_params[:power_unit][:states] =                         [{:raw_value=>obj}]
       else
         information_params[k] = obj
       end

@@ -7,10 +7,28 @@ describe PowerUnitsController do
     end
 
     context "with valid attributes" do
-      it "located the requested @power_unit" do
-        #put :update, id: @contact, contact: Factory.attributes_for(:contact)
-        get :add_informations, :id => @pu, :dl => 1, :gl => 2, :ml => 3
-        p @pu.diesel_informations
+      it "add level information to @power_unit" do
+        expect(@pu.diesel_informations.empty?).to be_true
+        expect(@pu.gpl_informations.empty?).to be_true
+        expect(@pu.mixed_informations.empty?).to be_true
+
+        expect(@pu.diesel_alarms.empty?).to be_true
+        expect(@pu.gpl_alarms.empty?).to be_true
+        expect(@pu.states.empty?).to be_true
+
+        get :add_informations, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :da => 0, :ga => 1, s: 2
+
+        @pu.reload
+
+        expect(@pu.diesel_informations[0].raw_value).to be_eql(1)
+        expect(@pu.gpl_informations[0].raw_value).to be_eql(2)
+        expect(@pu.mixed_informations[0].raw_value).to be_eql(3)
+
+        expect(@pu.diesel_alarms[0].raw_value).to be_eql(0)
+        expect(@pu.gpl_alarms[0].raw_value).to be_eql(1)
+        expect(@pu.states[0].raw_value).to be_eql(2)
+
+        response.should redirect_to power_unit_path
       end
 
       it "add diesel information" do
