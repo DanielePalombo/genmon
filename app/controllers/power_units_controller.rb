@@ -88,10 +88,9 @@ class PowerUnitsController < ApplicationController
     end
 
     respond_to do |format|
-      p information_params
       if @power_unit.update(information_params[:power_unit])
         format.html { redirect_to @power_unit, notice: 'Power unit was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: {set_mixed_to: @power_unit.diesel_mixed_set} }
       else
         format.html { render action: 'edit' }
         format.json { render json: @power_unit.errors, status: :unprocessable_entity }
