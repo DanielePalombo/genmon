@@ -21,12 +21,22 @@ describe PowerUnitsController do
         @pu.reload
 
         expect(@pu.diesel_informations[0].raw_value).to be_eql(1)
+        expect(@pu.diesel_informations[0].level).to be_eql(2)
+
         expect(@pu.gpl_informations[0].raw_value).to be_eql(2)
+        expect(@pu.gpl_informations[0].level).to be_eql(3)
+
         expect(@pu.mixed_informations[0].raw_value).to be_eql(3)
+        expect(@pu.mixed_informations[0].level).to be_eql(4)
 
         expect(@pu.diesel_alarms[0].raw_value).to be_eql(0)
+        expect(@pu.diesel_alarms[0].state).to be_eql('no alarm')
+
         expect(@pu.gpl_alarms[0].raw_value).to be_eql(1)
+        expect(@pu.gpl_alarms[0].state).to be_eql('pump no power')
+
         expect(@pu.states[0].raw_value).to be_eql(2)
+        expect(@pu.states[0].state).to be_eql('diesel')
 
         #response.should redirect_to power_unit_path
       end
