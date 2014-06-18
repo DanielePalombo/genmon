@@ -9,6 +9,7 @@ shared_examples_for "levelable" do
 
     alarm_hash_state = {
       0 => 1,
+      '2' => 3,
       65535 => 65536 
     }
 

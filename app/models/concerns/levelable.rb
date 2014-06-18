@@ -25,7 +25,7 @@ module Levelable
       end
 
       define_method 'raw_value=' do |*args1|
-        self.level = @@slope * args1[0] + @@know_term
+        self.level = @@slope * args1[0].to_i + @@know_term
 
         super args1[0]
       end
