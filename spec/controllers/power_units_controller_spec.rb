@@ -37,8 +37,6 @@ describe PowerUnitsController do
 
         expect(@pu.states[0].raw_value).to be_eql(2)
         expect(@pu.states[0].state).to be_eql('diesel')
-
-        #response.should redirect_to power_unit_path
       end
 
       it "return te @power_unit.mixed_set value" do
