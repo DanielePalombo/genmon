@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_power_unit_red_alarm_path(@power_unit), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Alarm
+  <% end %>
+  <h1>Listing alarms</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Raw value</th>
+            <th>State</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @red_alarms) do |red_alarm| %>
+            <td><%= red_alarm.raw_value %></td>
+            <td><%= red_alarm.state %></td>
+            <td><%= link_to 'Show', power_unit_red_alarm_path(@power_unit, red_alarm) %></td>
+        <td><%= link_to 'Edit', edit_power_unit_red_alarm_path(@power_unit, red_alarm) %></td>
+        <td><%= link_to 'Destroy', power_unit_red_alarm_path(@power_unit, red_alarm), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

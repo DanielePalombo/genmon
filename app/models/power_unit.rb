@@ -23,7 +23,7 @@ class PowerUnit
     #class_name: "LevelInformation", 
     #store_as: 'mixed_informations'
 
-  embeds_many :diesel_alarms#,
+  embeds_many :red_alarms#,
     #class_name: "Alarm", 
     #store_as: 'diesel_alarms'
 
@@ -33,5 +33,5 @@ class PowerUnit
 
   embeds_many :states
 
-  accepts_nested_attributes_for :diesel_informations, :gpl_informations, :mixed_informations, :diesel_alarms, :gpl_alarms, :states
+  accepts_nested_attributes_for :diesel_informations, :gpl_informations, :mixed_informations, :red_alarms, :gpl_alarms, :states
 end

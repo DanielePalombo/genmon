@@ -1,11 +1,11 @@
-<%= form_for(@diesel_alarm, :as => :diesel_alarm, :url => power_unit_diesel_alarm_path(@power_unit, @diesel_alarm), :html => { :class => "form-horizontal" }) do |f| %>
-  <% if @diesel_alarm.errors.any? %>
+<%= form_for(@red_alarm, :as => :red_alarm, :url => power_unit_red_alarm_path(@power_unit, @red_alarm), :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @red_alarm.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@diesel_alarm.errors.count, "error") %> prohibited this alarm from being saved:</h4>
+      <h4><%= pluralize(@red_alarm.errors.count, "error") %> prohibited this alarm from being saved:</h4>
 
       <ul>
-      <% @diesel_alarm.errors.full_messages.each do |msg| %>
+      <% @red_alarm.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

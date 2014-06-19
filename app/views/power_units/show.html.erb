@@ -30,8 +30,8 @@
   <dt>Gpl Alarm:</dt>
   <dd><%= @power_unit.gpl_alarms.last.state unless @power_unit.gpl_alarms.empty? %></dd>
 
-  <dt>Diesel Alarm:</dt>
-  <dd><%= @power_unit.diesel_alarms.last.state unless @power_unit.diesel_alarms.empty? %></dd>
+  <dt>Red Alarm:</dt>
+  <dd><%= @power_unit.red.last.state unless @power_unit.red_alarms.empty? %></dd>
 
   <dt>STATE:</dt>
   <dd><%= @power_unit.states.last.state unless @power_unit.states.empty? %></dd>

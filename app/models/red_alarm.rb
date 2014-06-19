@@ -1,4 +1,4 @@
-class DieselAlarm 
+class RedAlarm 
   include Stringable
 
   define_state_values({
