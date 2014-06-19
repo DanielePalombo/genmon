@@ -1,5 +1,5 @@
 require "spec_helper"
 
-describe GplAlarm do
+describe YellowAlarm do
   it_behaves_like "stringable"
 end

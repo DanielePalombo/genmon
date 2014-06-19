@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to power_unit_yellow_alarms_path(@power_unit), :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_power_unit_yellow_alarm_path(@power_unit, @yellow_alarm), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show yellow ALARM</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Raw value:</dt>
+  <dd><%= @yellow_alarm.raw_value %></dd>
+
+  <dt>State:</dt>
+  <dd><%= @yellow_alarm.state %></dd>
+
+</dl>

@@ -13,7 +13,7 @@ describe PowerUnitsController do
         expect(@pu.mixed_informations.empty?).to be_true
 
         expect(@pu.red_alarms.empty?).to be_true
-        expect(@pu.gpl_alarms.empty?).to be_true
+        expect(@pu.yellow_alarms.empty?).to be_true
         expect(@pu.states.empty?).to be_true
 
         get :add_informations, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :da => 0, :ga => 1, s: 2
@@ -32,8 +32,8 @@ describe PowerUnitsController do
         expect(@pu.red_alarms[0].raw_value).to be_eql(0)
         expect(@pu.red_alarms[0].state).to be_eql('no alarm')
 
-        expect(@pu.gpl_alarms[0].raw_value).to be_eql(1)
-        expect(@pu.gpl_alarms[0].state).to be_eql('pump no power')
+        expect(@pu.yellow_alarms[0].raw_value).to be_eql(1)
+        expect(@pu.yellow_alarms[0].state).to be_eql('pump no power')
 
         expect(@pu.states[0].raw_value).to be_eql(2)
         expect(@pu.states[0].state).to be_eql('diesel')

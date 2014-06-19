@@ -1,4 +1,4 @@
-class GplAlarm 
+class YellowAlarm 
   include Stringable
 
   define_state_values({

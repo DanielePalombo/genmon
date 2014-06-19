@@ -27,11 +27,11 @@ class PowerUnit
     #class_name: "Alarm", 
     #store_as: 'diesel_alarms'
 
-  embeds_many :gpl_alarms#,
+  embeds_many :yellow_alarms#,
     #class_name: "Alarm", 
-    #store_as: 'gpl_alarms'
+    #store_as: 'yellow_alarms'
 
   embeds_many :states
 
-  accepts_nested_attributes_for :diesel_informations, :gpl_informations, :mixed_informations, :red_alarms, :gpl_alarms, :states
+  accepts_nested_attributes_for :diesel_informations, :gpl_informations, :mixed_informations, :red_alarms, :yellow_alarms, :states
 end

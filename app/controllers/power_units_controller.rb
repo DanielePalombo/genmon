@@ -79,7 +79,7 @@ class PowerUnitsController < ApplicationController
       when 'da'                                                                           
         information_params[:power_unit][:red_alarms_attributes] =       [{:raw_value=>obj}]
       when 'ga'                                                                          
-        information_params[:power_unit][:gpl_alarms_attributes] =       [{:raw_value=>obj}]
+        information_params[:power_unit][:yellow_alarms_attributes] =       [{:raw_value=>obj}]
       when 's'                                                                          
         information_params[:power_unit][:states] =                         [{:raw_value=>obj}]
       else
