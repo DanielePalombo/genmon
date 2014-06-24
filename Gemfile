@@ -55,3 +55,5 @@ group :test do
   gem 'mongoid-rspec'
   gem 'factory_girl_rails'
 end
+
+gem 'unicorn'
