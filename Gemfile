@@ -57,3 +57,8 @@ group :test do
 end
 
 gem 'unicorn'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-bundler'
+end
