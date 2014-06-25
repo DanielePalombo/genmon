@@ -14,7 +14,7 @@ stdout_path "/var/www/genmon/current/log/unicorn.log"
 
 # Unicorn socket
 listen "/tmp/unicorn.[genmon].sock"
-listen "/tmp/unicorn.mypp.sock"
+listen "/tmp/unicorn.genmon.sock"
 
 # Number of processes
 # worker_processes 4
