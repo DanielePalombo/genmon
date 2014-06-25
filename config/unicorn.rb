@@ -4,7 +4,7 @@ working_directory "/var/www/genmon/current"
 
 # Unicorn PID file location
 # pid "/path/to/pids/unicorn.pid"
-pid "/var/www/genmon/current/pids/unicorn.pid"
+pid "/tmp/unicorn.pid"
 
 # Path to logs
 # stderr_path "/path/to/log/unicorn.log"
