@@ -76,9 +76,9 @@ class PowerUnitsController < ApplicationController
         information_params[:power_unit][:gpl_informations_attributes] =    [{:raw_value=>obj}]
       when 'ml'                                                                            
         information_params[:power_unit][:mixed_informations_attributes] =  [{:raw_value=>obj}]
-      when 'da'                                                                           
-        information_params[:power_unit][:red_alarms_attributes] =       [{:raw_value=>obj}]
-      when 'ga'                                                                          
+      when 'ra'                                                                           
+        information_params[:power_unit][:red_alarms_attributes] =          [{:raw_value=>obj}]
+      when 'ya'                                                                          
         information_params[:power_unit][:yellow_alarms_attributes] =       [{:raw_value=>obj}]
       when 's'                                                                          
         information_params[:power_unit][:states] =                         [{:raw_value=>obj}]

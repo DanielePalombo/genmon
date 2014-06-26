@@ -16,7 +16,7 @@ describe PowerUnitsController do
         expect(@pu.yellow_alarms.empty?).to be_true
         expect(@pu.states.empty?).to be_true
 
-        get :add_informations, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :da => 0, :ga => 1, s: 2
+        get :add_informations, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :ra => 0, :ya => 1, s: 2
 
         @pu.reload
 
