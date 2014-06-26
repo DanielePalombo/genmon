@@ -28,7 +28,7 @@
   <dd><%= @power_unit.mixed_informations.last.level unless @power_unit.mixed_informations.empty? %></dd>
 
   <dt>Red Alarm:</dt>
-  <dd><%= @power_unit.red.last.state unless @power_unit.red_alarms.empty? %></dd>
+  <dd><%= @power_unit.red_alarms.last.state unless @power_unit.red_alarms.empty? %></dd>
 
   <dt>Gpl Alarm:</dt>
   <dd><%= @power_unit.yellow_alarms.last.state unless @power_unit.yellow_alarms.empty? %></dd>
