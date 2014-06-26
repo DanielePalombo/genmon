@@ -28,8 +28,7 @@ Genmon::Application.routes.draw do
     resources :states
 
     member do
-      #put :add_informations
-      get :add_informations
+      put :add_informations
     end
   end
 

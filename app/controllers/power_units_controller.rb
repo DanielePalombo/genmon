@@ -1,4 +1,5 @@
 class PowerUnitsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
   before_action :set_power_unit, only: [:show, :edit, :update, :destroy, :add_informations]
 
   # GET /power_units

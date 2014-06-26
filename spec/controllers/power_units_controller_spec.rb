@@ -16,7 +16,7 @@ describe PowerUnitsController do
         expect(@pu.yellow_alarms.empty?).to be_true
         expect(@pu.states.empty?).to be_true
 
-        get :add_informations, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :ra => 0, :ya => 1, s: 2
+        put :add_informations, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :ra => 0, :ya => 1, s: 2
 
         @pu.reload
 
@@ -33,7 +33,7 @@ describe PowerUnitsController do
         expect(@pu.red_alarms[0].state).to be_eql('no alarm')
 
         expect(@pu.yellow_alarms[0].raw_value).to be_eql(1)
-        expect(@pu.yellow_alarms[0].state).to be_eql('pump no power')
+        expect(@pu.yellow_alarms[0].state).to be_eql('pump no pow')
 
         expect(@pu.states[0].raw_value).to be_eql(2)
         expect(@pu.states[0].state).to be_eql('diesel')
@@ -43,7 +43,7 @@ describe PowerUnitsController do
         @pu.diesel_mixed_set = 60
         @pu.save
 
-        get :add_informations, :format => :json, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :da => 0, :ga => 1, s: 2
+        put :add_informations, :format => :json, :id => @pu, :dl => 1, :gl => 2, :ml => 3, :ra => 0, :ya => 1, s: 2
         response.body.should == {set_mixed_to: 60}.to_json
       end
     end
