@@ -104,7 +104,7 @@ class PowerUnitsController < ApplicationController
     def set_power_unit
       @power_unit = PowerUnit.find(params[:id])
       if @power_unit.nil?
-        @power_unit = PowerUnit.find_by_code params[:id]
+        @power_unit = PowerUnit.find_by(code: params[:id])
       end
     end
 

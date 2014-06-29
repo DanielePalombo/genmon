@@ -4,14 +4,6 @@ shared_examples_for "stringable" do
   it 'check mapping' do
     model_instance = FactoryGirl.build(model.to_s.underscore.to_sym)
 
-    alarm_hash_state = {
-      '0' => 'no alarm',
-      '1' => 'pump no power',
-      '2' => 'no fuel',
-      '3' => 'pump timeout',
-      '4' => 'pump on fail'
-    }
-
     model_instance.hash_setted.each do |raw_value, state|
       p "#{raw_value} => #{state}"
 
