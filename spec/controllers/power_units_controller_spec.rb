@@ -42,7 +42,7 @@ describe PowerUnitsController do
         pu.save
 
         put :add_informations, :format => :json, :id => pu, :dl => 1, :gl => 2, :ml => 3, :ra => 0, :ya => 1, s: 2
-        response.body.should == {set_mixed_to: 60}.to_json
+        expect(response.body).to eql({set_mixed_to: 60}.to_json)
       end
     end
   end
