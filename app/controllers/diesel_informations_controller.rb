@@ -9,6 +9,21 @@ class DieselInformationsController < ApplicationController
   # GET /diesel_informations.json
   def index
     @diesel_informations = @power_unit.diesel_informations.all
+
+    min_date = @power_unit.diesel_informations.first.created_at
+    max_date = @power_unit.diesel_informations.last.created_at
+
+    min_date ||= DateTime.now
+    max_date ||= DateTime.now
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.csv  do 
+        headers['Content-Disposition'] = "attachment; filename=\"diesel_#{@power_unit.code}_#{min_date.strftime("%Y/%m/%d_%H%M")}_#{max_date.strftime("%Y/%m/%d_%H%M")}.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   # GET /diesel_informations/1

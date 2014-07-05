@@ -26,3 +26,14 @@ Genmon::Application.configure do
   config.assets.debug = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
+require 'csv'
+module ArrayToCSV
+  def to_csv
+    if first.is_a?(Mongoid::Document)
+      MongoidToCSV.documents_to_csv(self)
+    else
+      super
+    end
+  end
+end
+Array.send :include, ArrayToCSV

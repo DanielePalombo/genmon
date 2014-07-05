@@ -8,6 +8,13 @@ GIT
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
 
+GIT
+  remote: git://github.com/ordinaryzelig/mongoid_to_csv.git
+  revision: bf5001f30a4b2ecc843f635c4fe1072fd72d68ac
+  specs:
+    mongoid_to_csv (0.4.0)
+      mongoid (>= 2.0.0.rc.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -157,6 +164,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    render_csv (2.0.0)
+      rails (>= 3.0)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -239,7 +248,9 @@ DEPENDENCIES
   jquery-rails
   mongoid!
   mongoid-rspec
+  mongoid_to_csv!
   rails (= 4.0.0)
+  render_csv
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc

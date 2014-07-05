@@ -39,6 +39,8 @@ end
 gem 'formtastic'#,          github: 'justinfrench/formtastic'
 gem 'bootstrap-generators', '~> 3.0'
 gem 'devise'
+gem 'render_csv'
+gem 'mongoid_to_csv', :github => 'ordinaryzelig/mongoid_to_csv'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

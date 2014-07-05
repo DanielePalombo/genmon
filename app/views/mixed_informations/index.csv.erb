@@ -1,0 +1,1 @@
+<%- headers = ['created_at', 'raw_level', 'level'] -%><%= CSV.generate_line headers %><%- @mixed_informations.each do |i| -%><%= CSV.generate_line([(i.created_at.nil? ? '' : i.created_at.strftime("%Y/%m/%d %H:%M")), i.raw_value, i.level]) %><%- end -%>

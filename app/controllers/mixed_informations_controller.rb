@@ -9,6 +9,21 @@ class MixedInformationsController < ApplicationController
   # GET /mixed_informations.json
   def index
     @mixed_informations = @power_unit.mixed_informations.all
+
+    min_date = @power_unit.mixed_informations.first.created_at
+    max_date = @power_unit.mixed_informations.last.created_at
+
+    min_date ||= DateTime.now
+    max_date ||= DateTime.now
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.csv  do 
+        headers['Content-Disposition'] = "attachment; filename=\"mixed_#{@power_unit.code}_#{min_date.strftime("%Y/%m/%d_%H%M")}_#{max_date.strftime("%Y/%m/%d_%H%M")}.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   # GET /mixed_informations/1
