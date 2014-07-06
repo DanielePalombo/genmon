@@ -1,11 +1,38 @@
 require 'spec_helper'
 
+shared_examples_for "an information" do
+  it "raw_value" do
+    expect(information.raw_value).to be_eql(from)
+  end
+
+  it "created_at" do
+    expect(information.created_at).to_not be_nil
+    expect(information.created_at).to be >= @date_min
+  end
+end
+
+shared_examples_for "a levelable" do
+  it_behaves_like "an information"
+
+  it "level" do
+    expect(information.level).to be_eql(to)
+  end
+end
+
+shared_examples_for "a stringable" do
+  it_behaves_like "an information"
+
+  it "state" do
+    expect(information.state).to be_eql(to)
+  end
+end
+
 describe PowerUnitsController do
   let(:pu) { FactoryGirl.create(:power_unit) }
 
   describe "GET #add_informations" do
     context "with valid attributes" do
-      it "add level information to @power_unit" do
+      before(:each) do
         expect(pu.diesel_informations.empty?).to be_true
         expect(pu.gpl_informations.empty?).to be_true
         expect(pu.mixed_informations.empty?).to be_true
@@ -14,27 +41,56 @@ describe PowerUnitsController do
         expect(pu.yellow_alarms.empty?).to be_true
         expect(pu.states.empty?).to be_true
 
+        @to_compare = {
+          1 => 2,
+        }
+
+        @date_min = DateTime.now
         put :add_informations, :id => pu, :dl => 1, :gl => 2, :ml => 3, :ra => 0, :ya => 1, s: 2
 
         pu.reload
+      end
 
-        expect(pu.diesel_informations[0].raw_value).to be_eql(1)
-        expect(pu.diesel_informations[0].level).to be_eql(2)
+      context "diesel information" do
+        let(:information) {pu.diesel_informations[0]}
+        let(:from) {1}
+        let(:to) {2}
+        it_behaves_like "a levelable"
+      end
 
-        expect(pu.gpl_informations[0].raw_value).to be_eql(2)
-        expect(pu.gpl_informations[0].level).to be_eql(3)
+      context "gpl information" do
+        let(:information) {pu.gpl_informations[0]}
+        let(:from) {2}
+        let(:to) {3}
+        it_behaves_like "a levelable"
+      end
 
-        expect(pu.mixed_informations[0].raw_value).to be_eql(3)
-        expect(pu.mixed_informations[0].level).to be_eql(4)
+      context "mixed information" do
+        let(:information) {pu.mixed_informations[0]}
+        let(:from) {3}
+        let(:to) {4}
+        it_behaves_like "a levelable"
+      end
 
-        expect(pu.red_alarms[0].raw_value).to be_eql(0)
-        expect(pu.red_alarms[0].state).to be_eql('no alarm')
+      context "red alarm" do
+        let(:information) {pu.red_alarms[0]}
+        let(:from) {0}
+        let(:to) {'no alarm'}
+        it_behaves_like "a stringable"
+      end
 
-        expect(pu.yellow_alarms[0].raw_value).to be_eql(1)
-        expect(pu.yellow_alarms[0].state).to be_eql('pump no pow')
+      context "yellow alarm" do
+        let(:information) {pu.yellow_alarms[0]}
+        let(:from) {1}
+        let(:to) {'pump no pow'}
+        it_behaves_like "a stringable"
+      end
 
-        expect(pu.states[0].raw_value).to be_eql(2)
-        expect(pu.states[0].state).to be_eql('diesel')
+      context "states" do
+        let(:information) {pu.states[0]}
+        let(:from) {2}
+        let(:to) {'diesel'}
+        it_behaves_like "a stringable"
       end
 
       it "return te @power_unit.mixed_set value" do
