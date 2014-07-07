@@ -9,6 +9,9 @@ module Levelable
     #field :know_term #q
     #field :slope #b
     # FUNCTION to convert 
+    def to_percentage
+      (100 * level) / 65536
+    end
   end
 
   module ClassMethods

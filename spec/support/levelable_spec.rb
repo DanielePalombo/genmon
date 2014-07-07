@@ -1,6 +1,19 @@
 shared_examples_for "levelable" do
   let(:model) { described_class } # the class that includes the concern
 
+  it 'return correct percentage' do
+    model_instance = FactoryGirl.build(model.to_s.underscore.to_sym)
+
+    model_instance.raw_value = 0
+    expect(model_instance.to_percentage).to be_eql(0)
+
+    model_instance.raw_value = 65535 
+    expect(model_instance.to_percentage).to be_eql(100)
+
+    model_instance.raw_value = 32768 
+    expect(model_instance.to_percentage).to be_eql(50)
+  end
+
   it 'check mapping' do
     model_instance = FactoryGirl.build(model.to_s.underscore.to_sym)
 
