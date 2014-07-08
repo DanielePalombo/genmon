@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require_tree ./rgraph
-//= require_tree .
+//= require ./rgraph/libraries/RGraph.common.core.js
+//= require ./rgraph/libraries/RGraph.fuel.js
