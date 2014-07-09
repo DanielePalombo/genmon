@@ -23,7 +23,7 @@
       <%= content_tag_for(:tr, @gpl_informations) do |gpl_information| %>
         <td><%= gpl_information.raw_value %></td>
         <td><%= gpl_information.level %></td>
-        <td><%= gpl_information.created_at.in_time_zone %></td>
+        <td><%= gpl_information.created_at %></td>
         <td><%= link_to 'Show', power_unit_gpl_information_path(@power_unit, gpl_information) %></td>
         <td><%= link_to 'Edit', edit_power_unit_gpl_information_path(@power_unit, gpl_information) %></td>
         <td><%= link_to 'Destroy', power_unit_gpl_information_path(@power_unit, gpl_information), method: :delete, data: { confirm: 'Are you sure?' } %></td>
