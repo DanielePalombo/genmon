@@ -10,7 +10,12 @@ module Levelable
     #field :slope #b
     # FUNCTION to convert 
     def to_percentage
-      (100 * level) / 65536
+      max = 100
+      if level > 100
+        max
+      else 
+        (100 * level) / 100
+      end
     end
   end
 

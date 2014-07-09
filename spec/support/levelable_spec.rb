@@ -5,13 +5,13 @@ shared_examples_for "levelable" do
     model_instance = FactoryGirl.build(model.to_s.underscore.to_sym)
 
     model_instance.raw_value = 0
-    expect(model_instance.to_percentage).to be_eql(0)
+    expect(model_instance.to_percentage).to be_eql(1)
 
-    model_instance.raw_value = 65535 
-    expect(model_instance.to_percentage).to be_eql(100)
-
-    model_instance.raw_value = 32768 
+    model_instance.raw_value = 49 
     expect(model_instance.to_percentage).to be_eql(50)
+
+    model_instance.raw_value = 99 
+    expect(model_instance.to_percentage).to be_eql(100)
   end
 
   it 'check mapping' do

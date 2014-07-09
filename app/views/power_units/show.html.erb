@@ -20,7 +20,7 @@
   <dt>Red Alarm:</dt>
   <dd><%= @power_unit.red_alarms.last.state unless @power_unit.red_alarms.empty? %></dd>
 
-  <dt>Gpl Alarm:</dt>
+  <dt>Yellow Alarm:</dt>
   <dd><%= @power_unit.yellow_alarms.last.state unless @power_unit.yellow_alarms.empty? %></dd>
 
   <dt>STATE:</dt>
@@ -37,7 +37,7 @@ mixed  = @power_unit.mixed_informations.last.to_percentage
   <div class="col-md-4 col-sm-12">
     <div class="thumbnail">
       <canvas id="diesel"    width="300" height="250" style="float: left; cursor: default;">[No canvas support]</canvas>
-      <div class="caption">
+      <div class="caption col-md-12">
         <h3>Diesel <p class='small'></p></h3>
 
         <div class="progress">
@@ -53,7 +53,7 @@ mixed  = @power_unit.mixed_informations.last.to_percentage
   <div class="col-md-4 col-sm-12">
     <div class="thumbnail">
       <canvas id="gpl"    width="300" height="250" style="float: left; cursor: default;">[No canvas support]</canvas>
-      <div class="caption">
+      <div class="caption col-md-12">
         <h3>Gpl</h3>
 
         <div class="progress">
@@ -69,7 +69,7 @@ mixed  = @power_unit.mixed_informations.last.to_percentage
   <div class="col-md-4 col-sm-12">
     <div class="thumbnail">
       <canvas id="mixed"    width="300" height="250" style="float: left; cursor: default;">[No canvas support]</canvas>
-      <div class="caption">
+      <div class="caption col-md-12">
         <h3>Mixed</p></h3>
 
         <div class="progress">
