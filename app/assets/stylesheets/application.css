@@ -15,3 +15,15 @@
 .thumbnail {
   height: 270px;
 }
+
+.red_alarm {
+  color: red;
+}
+
+.yellow_alarm {
+  color: orange;
+}
+
+.state {
+  color: green;
+}

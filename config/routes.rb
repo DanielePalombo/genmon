@@ -22,8 +22,8 @@ Genmon::Application.routes.draw do
     resources :gpl_informations
     resources :mixed_informations
 
-    resources :gpl_alarms
-    resources :diesel_alarms
+    resources :yellow_alarms
+    resources :red_alarms
 
     resources :states
 
