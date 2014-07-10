@@ -3,6 +3,12 @@ class PowerUnit
   field :code, type: String
   field :diesel_mixed_set, type: Integer, default: 100
 
+  field :diesel_enabled, type: Boolean, default: true
+  field :gpl_enabled, type: Boolean, default: true
+  field :mixed_enabled, type: Boolean, default: true
+
+  validates_presence_of :diesel_enabled, :gpl_enabled, :mixed_enabled
+
   validates :code, 
     :presence => true , 
     :uniqueness => {:case_sensitive => false}

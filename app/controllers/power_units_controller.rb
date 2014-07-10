@@ -72,11 +72,17 @@ class PowerUnitsController < ApplicationController
       information_params[:power_unit] ||= HashWithIndifferentAccess.new 
       case k
       when 'dl'
-        information_params[:power_unit][:diesel_informations_attributes] = [{:raw_value=>obj}]
+        if @power_unit.diesel_enabled?
+          information_params[:power_unit][:diesel_informations_attributes] = [{:raw_value=>obj}]
+        end
       when 'gl'                                                                             
-        information_params[:power_unit][:gpl_informations_attributes] =    [{:raw_value=>obj}]
+        if @power_unit.gpl_enabled?
+          information_params[:power_unit][:gpl_informations_attributes] =    [{:raw_value=>obj}]
+        end
       when 'ml'                                                                            
-        information_params[:power_unit][:mixed_informations_attributes] =  [{:raw_value=>obj}]
+        if @power_unit.mixed_enabled?
+          information_params[:power_unit][:mixed_informations_attributes] =  [{:raw_value=>obj}]
+        end
       when 'ra'                                                                           
         information_params[:power_unit][:red_alarms_attributes] =          [{:raw_value=>obj}]
       when 'ya'                                                                          
@@ -110,6 +116,6 @@ class PowerUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def power_unit_params
-      params.require(:power_unit).permit(:code, :diesel_mixed_set)
+      params.require(:power_unit).permit(:code, :diesel_mixed_set, :diesel_enabled, :mixed_enabled, :gpl_enabled)
     end
 end

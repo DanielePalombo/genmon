@@ -31,16 +31,44 @@ describe PowerUnitsController do
   let(:pu) { FactoryGirl.create(:power_unit) }
 
   describe "GET #add_informations" do
-    context "with valid attributes" do
+    before(:each) do
+      expect(pu.diesel_informations.empty?).to be_true
+      expect(pu.gpl_informations.empty?).to be_true
+      expect(pu.mixed_informations.empty?).to be_true
+
+      expect(pu.red_alarms.empty?).to be_true
+      expect(pu.yellow_alarms.empty?).to be_true
+      expect(pu.states.empty?).to be_true
+    end
+
+    context "disabled all information" do
       before(:each) do
+        @to_compare = {
+          1 => 2,
+        }
+
+        pu.diesel_enabled = false
+        pu.gpl_enabled = false
+        pu.mixed_enabled = false
+        pu.save
+
+        @date_min = DateTime.now
+        put :add_informations, :id => pu, :dl => 1, :gl => 2, :ml => 3, :ra => 0, :ya => 1, s: 2
+
+        pu.reload
+      end
+
+      it 'dont upload disabled information' do
         expect(pu.diesel_informations.empty?).to be_true
         expect(pu.gpl_informations.empty?).to be_true
         expect(pu.mixed_informations.empty?).to be_true
+      end
+    end
 
-        expect(pu.red_alarms.empty?).to be_true
-        expect(pu.yellow_alarms.empty?).to be_true
-        expect(pu.states.empty?).to be_true
 
+
+    context "with valid attributes" do
+      before(:each) do
         @to_compare = {
           1 => 2,
         }

@@ -1,6 +1,14 @@
 require "spec_helper"
 
 describe PowerUnit do
+  it { should have_field(:diesel_enabled).of_type(Mongoid::Boolean).with_default_value_of(true) }
+  it { should have_field(:gpl_enabled)   .of_type(Mongoid::Boolean).with_default_value_of(true) }
+  it { should have_field(:mixed_enabled) .of_type(Mongoid::Boolean).with_default_value_of(true) }
+
+  it { should validate_presence_of(:diesel_enabled) }
+  it { should validate_presence_of(:gpl_enabled) }
+  it { should validate_presence_of(:mixed_enabled) }
+
   it { should validate_presence_of(:code) }
   it { should validate_uniqueness_of(:code).case_insensitive }
 

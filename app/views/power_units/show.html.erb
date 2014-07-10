@@ -49,13 +49,14 @@
 </dl>
 
 <%-
-diesel = @power_unit.diesel_informations.last.to_percentage
-gpl    = @power_unit.gpl_informations.last.to_percentage
-mixed  = @power_unit.mixed_informations.last.to_percentage
+  diesel, gpl, mixed = nil, nil, nil
+  diesel = @power_unit.diesel_informations.last.to_percentage unless @power_unit.diesel_informations.empty? || !@power_unit.diesel_enabled?
+  gpl    = @power_unit.gpl_informations.last.to_percentage unless @power_unit.gpl_informations.empty? || !@power_unit.gpl_enabled?
+  mixed  = @power_unit.mixed_informations.last.to_percentage unless @power_unit.mixed_informations.empty? || !@power_unit.mixed_enabled?
 -%>
 
 <div class="row">
-  <% unless @power_unit.diesel_informations.empty? %>
+  <% unless diesel.nil?%>
   <div class="col-md-4 col-sm-12">
     <div class="thumbnail">
       <canvas id="diesel"    width="300" height="250" style="float: left; cursor: default;">[No canvas support]</canvas>
@@ -75,7 +76,7 @@ mixed  = @power_unit.mixed_informations.last.to_percentage
     </div>
   </div>
   <% end %>
-  <% unless @power_unit.gpl_informations.empty? %>
+  <% unless gpl.nil? %>
   <div class="col-md-4 col-sm-12">
     <div class="thumbnail">
       <canvas id="gpl"    width="300" height="250" style="float: left; cursor: default;">[No canvas support]</canvas>
@@ -95,7 +96,7 @@ mixed  = @power_unit.mixed_informations.last.to_percentage
     </div>
   </div>
   <% end %>
-  <% unless @power_unit.mixed_informations.empty? %>
+  <% unless mixed.nil? %>
   <div class="col-md-4 col-sm-12">
     <div class="thumbnail">
       <canvas id="mixed"    width="300" height="250" style="float: left; cursor: default;">[No canvas support]</canvas>
@@ -121,8 +122,14 @@ mixed  = @power_unit.mixed_informations.last.to_percentage
   window.onload = function ()
   {
       // Create the Fuel chart. The arguments are: the minimum, the maximum, and the value.
+    <%- unless diesel.nil? %>
       var diesel = new RGraph.Fuel('diesel', 0, 100, <%= diesel %>).grow();
+    <% end %>
+    <%- unless gpl.nil? %>
       var gpl =    new RGraph.Fuel('gpl'   , 0, 100, <%= gpl %>   ).grow();
+    <% end %>
+    <%- unless mixed.nil? %>
       var mixed =  new RGraph.Fuel('mixed' , 0, 100, <%= mixed %> ).grow();
+    <% end %>
   }
 </script>
