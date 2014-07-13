@@ -102,7 +102,7 @@ class PowerUnitsController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @power_unit.errors, status: :unprocessable_entity }
       end
-      p 'confirmed return'
+      logger.info "Returned set_mixed_to for power_unit #{@power_unit.code}"
     end
   end
 
