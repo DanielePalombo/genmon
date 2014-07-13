@@ -102,6 +102,7 @@ class PowerUnitsController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @power_unit.errors, status: :unprocessable_entity }
       end
+      p 'confirmed return'
     end
   end
 
